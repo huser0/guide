@@ -17,7 +17,7 @@
     "description": "Guia de estudos interativo para certificação AWS SAA-C03: IAM, EC2, VPC, ELB, RDS, Route53, S3, DynamoDB, Lambda, CloudFront, CloudWatch e muito mais.",
     "tags": ["AWS", "SAA-C03"],
     "status": "available",
-    "url": "https://aws-solutions-architect-guide.vercel.app",
+    "url": "https://hugosergio.com.br/aws-solutions-architect-guide/",
     "icon": "AWS",
     "theme": "aws"
   }
