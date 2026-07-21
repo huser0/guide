@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Header from './components/Header.jsx'
 import GuideCard from './components/GuideCard.jsx'
 
@@ -7,6 +7,7 @@ import guidesData from './data/guides.json'
 function App() {
   const [guides, setGuides] = useState([])
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     setGuides(guidesData)
@@ -21,8 +22,18 @@ function App() {
     setTheme(t => t === 'light' ? 'dark' : 'light')
   }
 
-  const available = guides.filter(g => g.status === 'available')
-  const coming = guides.filter(g => g.status !== 'available')
+  const filteredGuides = useMemo(() => {
+    if (!search.trim()) return guides
+    const q = search.toLowerCase()
+    return guides.filter(g =>
+      g.title.toLowerCase().includes(q) ||
+      g.description.toLowerCase().includes(q) ||
+      g.tags.some(t => t.toLowerCase().includes(q))
+    )
+  }, [guides, search])
+
+  const available = filteredGuides.filter(g => g.status === 'available')
+  const coming = filteredGuides.filter(g => g.status !== 'available')
 
   return (
     <div className="app-layout">
@@ -40,9 +51,19 @@ function App() {
           </p>
         </section>
 
+        <div className="hub-search">
+          <input
+            className="hub-search-input"
+            type="text"
+            placeholder="Buscar guia por nome, descrição ou tag…"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </div>
+
         {available.length > 0 && (
           <section className="guides-section">
-            <h2 className="section-label">Disponíveis</h2>
+            <h2 className="section-label">Disponíveis · {available.length}</h2>
             <div className="guides-grid">
               {available.map((g, i) => (
                 <GuideCard key={g.id} guide={g} index={i} />
@@ -53,13 +74,19 @@ function App() {
 
         {coming.length > 0 && (
           <section className="guides-section">
-            <h2 className="section-label">Em breve</h2>
+            <h2 className="section-label">Em breve · {coming.length}</h2>
             <div className="guides-grid">
               {coming.map((g, i) => (
                 <GuideCard key={g.id} guide={g} index={i} />
               ))}
             </div>
           </section>
+        )}
+
+        {filteredGuides.length === 0 && guides.length > 0 && (
+          <div className="empty-state">
+            <p>Nenhum guia encontrado para "<strong>{search}</strong>"</p>
+          </div>
         )}
 
         {guides.length === 0 && (

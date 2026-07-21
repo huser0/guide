@@ -57,6 +57,16 @@ body {
 /* ───── Main area ───── */
 .main-area { padding: 80px 28px 60px; max-width: 900px; margin: 0 auto; }
 
+.hub-search { margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.hub-search-input {
+  width: 100%; background: var(--bg-surface); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 10px 14px; font-size: 14px;
+  font-family: var(--font-sans); color: var(--text-primary); outline: none;
+  transition: border-color 0.15s;
+}
+.hub-search-input::placeholder { color: var(--text-muted); }
+.hub-search-input:focus { border-color: var(--accent); }
+
 .hero { margin-bottom: 48px; text-align: center; }
 .hero-tag {
   font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
@@ -79,9 +89,10 @@ body {
 .guide-card {
   background: var(--bg-surface); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 22px 26px;
-  cursor: pointer; transition: all 0.2s;
+  cursor: pointer; transition: all 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.guide-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.guide-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+.guide-card:active { transform: translateY(-1px); }
 .guide-card.disabled { opacity: 0.5; cursor: default; }
 .guide-card.disabled:hover { border-color: var(--border); transform: none; box-shadow: none; }
 
