@@ -6,17 +6,27 @@ import guidesData from './data/guides.json'
 
 function App() {
   const [guides, setGuides] = useState([])
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
 
   useEffect(() => {
     setGuides(guidesData)
   }, [])
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  function toggleTheme() {
+    setTheme(t => t === 'light' ? 'dark' : 'light')
+  }
 
   const available = guides.filter(g => g.status === 'available')
   const coming = guides.filter(g => g.status !== 'available')
 
   return (
     <div className="app-layout">
-      <Header />
+      <Header theme={theme} toggleTheme={toggleTheme} />
 
       <main className="main-area">
         <section className="hero">

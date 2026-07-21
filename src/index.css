@@ -111,6 +111,31 @@ body {
 .badge-available { background: rgba(199, 91, 63, 0.1); color: var(--accent); }
 .badge-coming { background: var(--bg-hover); color: var(--text-muted); }
 
+.theme-btn {
+  background: none; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 15px; line-height: 1; padding: 5px 8px;
+  transition: all 0.15s;
+}
+.theme-btn:hover { border-color: var(--accent); }
+
 .empty-state { text-align: center; padding: 60px 0; color: var(--text-muted); }
 .empty-hint { margin-top: 8px; font-size: 13px; }
 .empty-hint code { font-family: var(--font-mono); font-size: 12px; background: var(--bg-hover); padding: 2px 6px; border-radius: 3px; }
+
+[data-theme="dark"] {
+  --bg-base: #1a1714;
+  --bg-surface: #2a2520;
+  --bg-elevated: #353028;
+  --bg-hover: #3d3830;
+  --border: #4a443a;
+  --border-strong: #6b6357;
+  --accent: #d47a5f;
+  --accent-soft: rgba(212, 122, 95, 0.12);
+  --text-primary: #f2ede3;
+  --text-secondary: #c9bfae;
+  --text-muted: #958c7e;
+}
+[data-theme="dark"] .app-header { background: rgba(42,37,32,0.92); }
+[data-theme="dark"] .guide-card { background: var(--bg-surface); }
+[data-theme="dark"] .badge-available { background: rgba(212, 122, 95, 0.15); }
+[data-theme="dark"] .hub-badge { background: rgba(212, 122, 95, 0.12); border-color: rgba(212, 122, 95, 0.25); color: var(--accent); }
