@@ -1,0 +1,24 @@
+[
+  {
+    "id": "quarkus",
+    "title": "Quarkus Guide",
+    "subtitle": "Spring → Quarkus",
+    "description": "Guia de estudos interativo para desenvolvedores Spring aprenderem Quarkus de forma prática e comparativa.",
+    "tags": ["Java", "Framework", "Backend"],
+    "status": "available",
+    "url": "",
+    "icon": "Q",
+    "theme": "quarkus"
+  },
+  {
+    "id": "aws-saa-c03",
+    "title": "AWS Solutions Architect Guide",
+    "subtitle": "SAA-C03",
+    "description": "Guia de estudos interativo para certificação AWS SAA-C03: IAM, EC2, VPC, ELB, RDS, Route53, S3, DynamoDB, Lambda, CloudFront, CloudWatch e muito mais.",
+    "tags": ["AWS", "SAA-C03"],
+    "status": "available",
+    "url": "https://aws-solutions-architect-guide.vercel.app",
+    "icon": "AWS",
+    "theme": "aws"
+  }
+]
